@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Adiministrador_Financeiro.Views.Configuracao">
+    <StackLayout BackgroundColor="Aqua">
+        <Frame BackgroundColor="Black" Padding="24" CornerRadius="1">
+            <Label x:Name="Usuario" Text="Ivan Carlos Rezini" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+
+        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="5,5,5,5">
+            <Button x:Name="cliente" BackgroundColor="#0F28AF" Text="Nome" HorizontalOptions="FillAndExpand" Clicked="cliente_Clicked"/>
+            <Button x:Name="veicolo" BackgroundColor="#65178C" Text="Veicolos" HorizontalOptions="FillAndExpand" Clicked="veicolo_Clicked"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="5,5,5,5">
+            <Button x:Name="banco" BackgroundColor="#1CD51C" Text="Banco" HorizontalOptions="FillAndExpand" Clicked="banco_Clicked"/>
+            <Button x:Name="posto" BackgroundColor="#B4E112" Text="Posto" HorizontalOptions="FillAndExpand" Clicked="posto_Clicked"/>
+        </StackLayout>
+
+        <StackLayout VerticalOptions="Center" >
+            <TableView>
+                <TableRoot>
+                    <TableSection x:Name="tabela">
+                        <ViewCell x:Name="celulaSelecao">
+                            <Picker x:Name="Selecao"  SelectedIndexChanged="Selecao_SelectedIndexChanged"
+                                FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                        <ViewCell x:Name="celulaId" >
+                            <Label x:Name="Id" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"
+                                   VerticalTextAlignment="Center"/>
+                        </ViewCell>
+                        <ViewCell x:Name="celulaNome">
+                            <Entry x:Name="Nome" Placeholder="Nome: " Keyboard="Text" PlaceholderColor="Black"
+                               FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                        <ViewCell x:Name="celulaHodometro">
+                            <Entry x:Name="Hodometro" Placeholder="Digite o Valor do hodometro: " Keyboard="Numeric" PlaceholderColor="Black"
+                               FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="5,5,5,5">
+            <Button x:Name="Salvar" BackgroundColor="#1CD51C" Text="Salvar" HorizontalOptions="FillAndExpand" Clicked="Salvar_Clicked"/>
+            <Button x:Name="cancelar" BackgroundColor="#B4E112" Text="Cancelar" HorizontalOptions="FillAndExpand" Clicked="cancelar_Clicked"/>
+
+        </StackLayout>
+    </StackLayout>
+
+    </ContentPage>

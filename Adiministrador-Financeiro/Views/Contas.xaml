@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Adiministrador_Financeiro.Views.Contas">
+    <StackLayout BackgroundColor="Aqua">
+        <Frame BackgroundColor="Black" Padding="24" CornerRadius="1">
+            <Label x:Name="nome" Text="" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <StackLayout VerticalOptions="Fill" >
+            <TableView>
+                <TableRoot>
+                    <TableSection>
+                        <ViewCell>
+                            <Picker x:Name="Conta" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <Picker x:Name="Banco" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <Entry x:Name="Valor" Placeholder="Total R$:" Keyboard="Numeric" PlaceholderColor="Black"
+                               FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <Label Text="Selecione uma data:" FontAttributes="Bold" TextColor="Black" FontSize="18"
+                               HorizontalTextAlignment="Center"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <DatePicker x:Name="date" TextColor="Black" Format="dd/MM/yyyy" HorizontalOptions="Center" />
+                        </ViewCell>
+
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+
+        <StackLayout>
+            <Button BackgroundColor="Green" Text="Salvar" Clicked="Button_Clicked"></Button>
+        </StackLayout>
+    </StackLayout>
+    </ContentPage>

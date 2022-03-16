@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Adiministrador_Financeiro.MainPage">
+
+    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional">
+        <Frame BackgroundColor="Black" Padding="24" CornerRadius="1">
+            <Label x:Name="nome" Text="Cadastre seu nome" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+
+        <AbsoluteLayout >
+            <TableView RowHeight="50">
+                <TableRoot>
+                    <TableSection>
+                        <ViewCell >
+                            <Button  x:Name="receitas" Clicked="receitas_Clicked" 
+                Text="Receitas" TextColor="Black" BackgroundColor="Green" FontSize="20"  FontAttributes="Bold"
+                 BorderWidth="1" BorderColor="Black" 
+                 />
+                        </ViewCell>
+                        <ViewCell>
+                            <Button
+                 x:Name="saques" Clicked="saques_Clicked"
+                Text="Saques" TextColor="Black" BackgroundColor="Yellow" FontSize="20"  FontAttributes="Bold"
+                 BorderWidth="1" BorderColor="Black"
+                />
+                        </ViewCell>
+
+                        <ViewCell>
+                            <Button
+                 x:Name="contasPagas" Clicked="contasPagas_Clicked"
+                Text="Contas paga" TextColor="Black" BackgroundColor="Red" FontSize="20"  FontAttributes="Bold"
+                 BorderWidth="1" BorderColor="Black"
+                />
+                        </ViewCell>
+
+                        <ViewCell>
+                            <Button
+                 x:Name="abastecimento" Clicked="abastecimento_Clicked"
+                Text="Abastecimento" TextColor="Black" BackgroundColor="GreenYellow" FontSize="20"  FontAttributes="Bold"
+                  BorderWidth="1" BorderColor="Black"
+                />
+                        </ViewCell>
+
+
+                        <ViewCell>
+                            <Button
+                 x:Name="extratoAbastecimento" Clicked="extratoAbastecimento_Clicked"
+                Text="Extrato abastecimento" TextColor="Black" BackgroundColor="Violet" FontSize="20"  FontAttributes="Bold"
+                  BorderWidth="1" BorderColor="Black"
+                />
+                        </ViewCell>
+
+                        <ViewCell >
+                            <Button
+                                    x:Name="extratoContas" Clicked="extratoContas_Clicked" Margin="2, 0, 2, 0"
+                                    Text="Extrato contas" TextColor="Black" BackgroundColor="Blue" FontSize="20"  FontAttributes="Bold"
+                                    BorderWidth="1" BorderColor="Black" 
+                                />
+                        </ViewCell>
+                        <ViewCell >
+                            <Button
+                                    x:Name="configuracao" Clicked="configuracao_Clicked" Margin="2, 0, 2, 0"
+                                    Text="Configuraçoes" TextColor="Black" BackgroundColor="Yellow" FontSize="20"  FontAttributes="Bold"
+                                    BorderWidth="1" BorderColor="Black" 
+                                />
+                        </ViewCell>
+                        <ViewCell>
+                            <Button 
+                                x:Name="sair" Clicked="sair_Clicked" Margin="2, 0, 2, 0"
+                                Text="Sair" TextColor="Black" BackgroundColor="WhiteSmoke" FontSize="20"  FontAttributes="Bold"
+                                BorderWidth="5" BorderColor="Black"
+                            />
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </AbsoluteLayout>
+
+    </StackLayout>
+
+</ContentPage>

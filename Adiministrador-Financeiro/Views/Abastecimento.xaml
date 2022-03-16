@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Adiministrador_Financeiro.Views.Abastecimento">
+    
+    <StackLayout BackgroundColor="Aqua">
+        <Frame BackgroundColor="Black" Padding="24" CornerRadius="1">
+            <Label x:Name="nome" Text="Ivan Carlos Rezini" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <StackLayout VerticalOptions="Fill" >
+            <TableView>
+                <TableRoot>
+                    <TableSection>
+                        <ViewCell>
+                            <Picker x:Name="Veicolo"  SelectedIndexChanged="Veicolo_SelectedIndexChanged"
+                                FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <Entry x:Name="totalLitros" Placeholder="Total de litros:" Keyboard="Numeric" PlaceholderColor="Black"
+                               FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <Entry x:Name="total" Placeholder="Total R$:" Keyboard="Numeric" PlaceholderColor="Black"
+                               FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <Entry x:Name="vlLitro" Placeholder="Valor do Litro:" PlaceholderColor="Black" Keyboard="Numeric"
+                               FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <Label Text="Selecione uma data:" FontAttributes="Bold" TextColor="Black" FontSize="18"
+                               HorizontalTextAlignment="Center"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <DatePicker x:Name="date" TextColor="Black" Format="dd/MM/yyyy" HorizontalOptions="Center" />
+
+                        </ViewCell>
+                        <ViewCell>
+                            <Entry x:Name="nomePosto" TextChanged="nomePosto_TextChanged"  Placeholder="Digite o nome do posto ou selecione um:" Text="" PlaceholderColor="Black" 
+                               FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <Picker x:Name="Postos" SelectedIndexChanged="Postos_SelectedIndexChanged" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <Entry x:Name="km" Placeholder="Digite o Km percorido:" PlaceholderColor="Black"  Keyboard="Numeric"
+                               FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <Label x:Name="kmTotal" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                    </TableSection>
+
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+
+        <StackLayout>
+            <Button BackgroundColor="Green" Text="Salvar" Clicked="salvar_Clicked"></Button>
+        </StackLayout>
+    </StackLayout>
+    </ContentPage>
