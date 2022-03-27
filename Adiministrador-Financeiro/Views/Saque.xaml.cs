@@ -60,12 +60,13 @@ namespace Adiministrador_Financeiro.Views
                         bancoModel.Valor = Valor.Text;
                         string[] subs = Banco.SelectedItem.ToString().Trim().Split(' ');
                         bancoModel.IdBanco = Int16.Parse(subs[0]);
-                        bancoModel.Data = date.Date;
+                        bancoModel.Data = date.Date.ToString("yyyy-MM-");
                         Contexto con = new Contexto();
                         try
                         {
                             con.insert(bancoModel);
                             await DisplayAlert("Cadastro", "Efetuado", "OK");
+                            this.limparCampos();
                         }
                         catch (Exception er)
                         {
@@ -75,8 +76,7 @@ namespace Adiministrador_Financeiro.Views
                     else
                     {
                         await DisplayAlert("Alert", "Cancelado", "OK");
-                        Valor.Text = "";
-                        Banco.SelectedItem = -1;
+                        this.limparCampos();
                     }
                 }
                 else
@@ -89,5 +89,10 @@ namespace Adiministrador_Financeiro.Views
                 await DisplayAlert("Alert", "Valor não coresponde a um numero.", "OK");
             }
         }
-    }
+        public void limparCampos()
+        {
+            Banco.SelectedItem = null;
+            Valor.Text = "";
+        }
+        }
 }

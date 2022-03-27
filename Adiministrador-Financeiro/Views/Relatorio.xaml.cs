@@ -14,21 +14,26 @@ namespace Adiministrador_Financeiro.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Relatorio : ContentPage
     {
-        public Relatorio()
+        public Relatorio(DateTime inicio,DateTime fim, int veicolo)
         {
             InitializeComponent();
-            this.consulta();
-
+            this.consulta(inicio,fim,veicolo);
         }
-
-        private void consulta()
+        private void consulta(DateTime inicio, DateTime fim, int veicolo)
         {
-            RelatorioAbastecimento rr = new RelatorioAbastecimento();
+            try
+            {
+                RelatorioAbastecimento rr = new RelatorioAbastecimento();
 
 
-            List<RelatorioAbastecimentoModel> da = new List<RelatorioAbastecimentoModel>();
-            da = rr.Relatorio();
-            Listagem.ItemsSource = da;
+                List<RelatorioAbastecimentoModel> da = new List<RelatorioAbastecimentoModel>();
+                da = rr.Relatorio(inicio, fim, veicolo);
+                Listagem.ItemsSource = da;
+            }
+            catch
+            {
+                DisplayAlert("Falha", "Falha ao caregar Relatorio", "Ok");
+            }
         }
     }
 }

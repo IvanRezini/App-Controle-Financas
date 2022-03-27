@@ -9,6 +9,7 @@
         </Frame>
 
         <AbsoluteLayout >
+           
             <TableView RowHeight="50">
                 <TableRoot>
                     <TableSection>
@@ -70,6 +71,13 @@
                                 x:Name="sair" Clicked="sair_Clicked" Margin="2, 0, 2, 0"
                                 Text="Sair" TextColor="Black" BackgroundColor="WhiteSmoke" FontSize="20"  FontAttributes="Bold"
                                 BorderWidth="5" BorderColor="Black"
+                            />
+                        </ViewCell>
+                        <ViewCell>
+                        <ImageButton 
+                            BackgroundColor="#800000"
+                            Aspect="AspectFill"
+                            Source="/Resources/drawable/unnamed.png" 
                             />
                         </ViewCell>
                     </TableSection>

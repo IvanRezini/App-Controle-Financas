@@ -20,12 +20,19 @@
                                FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
                         </ViewCell>
                         <ViewCell>
+                        <Entry x:Name="vlLitro" Placeholder="Valor do Litro:" PlaceholderColor="Black" Keyboard="Numeric"
+                               FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+
+                        <ViewCell>
                             <Entry x:Name="total" Placeholder="Total R$:" Keyboard="Numeric" PlaceholderColor="Black"
                                FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
                         </ViewCell>
                         <ViewCell>
-                            <Entry x:Name="vlLitro" Placeholder="Valor do Litro:" PlaceholderColor="Black" Keyboard="Numeric"
-                               FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                            <StackLayout Orientation="Horizontal" RadioButtonGroup.GroupName=" pagamento">
+                                <RadioButton x:Name="Dinheiro" Content="Dinheiro"  FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                                <RadioButton x:Name="CartaoPix" Content="Cartão / Pix" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                            </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <Label Text="Selecione uma data:" FontAttributes="Bold" TextColor="Black" FontSize="18"

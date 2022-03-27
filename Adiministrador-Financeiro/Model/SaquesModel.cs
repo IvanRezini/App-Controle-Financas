@@ -10,7 +10,7 @@ namespace Adiministrador.Model
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int IdBanco { get; set; }
-        public DateTime Data { get; set; }
+        public string Data { get; set; }
         public string Valor { get; set; }
     }
 }

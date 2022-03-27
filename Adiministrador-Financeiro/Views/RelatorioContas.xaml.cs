@@ -10,12 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace Adiministrador_Financeiro.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RelatorioContas : ContentView
+    public partial class RelatorioContas : ContentPage
     {
         public RelatorioContas(string usuario)
         {
             InitializeComponent();
-            nome.Text = usuario;
         }
     }
 }

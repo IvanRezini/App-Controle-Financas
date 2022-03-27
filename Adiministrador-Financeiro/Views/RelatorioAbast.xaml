@@ -10,7 +10,7 @@
         <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="5,5,5,5">
             <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
                 <Label Text="Inicio" FontSize="18" TextColor="Black" FontAttributes="Bold"/>
-                <DatePicker x:Name="dateInicio" TextColor="Black" Format="dd/MM/yyyy" FontAttributes="Bold"/>
+                <DatePicker  Date="01/01/2020" x:Name="dateInicio" TextColor="Black" Format="dd/MM/yyyy" FontAttributes="Bold"/>
             </StackLayout>
             <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
                 <Label Text="Fim"  FontSize="18" TextColor="Black" FontAttributes="Bold"/>
@@ -18,12 +18,12 @@
             </StackLayout>
         </StackLayout>
         <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="5,5,5,5">
-            <Picker x:Name="Selecao" Title="Selecione um veicolo:" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+            <Picker x:Name="Selecao"  FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
         </StackLayout>
         <StackLayout>
             <Button BackgroundColor="Green" Text="Gerar Relatorio" Clicked="Button_Clicked"></Button>
         </StackLayout>
-
+   
     </StackLayout>
 
     </ContentPage>

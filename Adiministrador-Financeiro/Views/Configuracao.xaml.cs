@@ -42,7 +42,7 @@ namespace Adiministrador_Financeiro.Views
             Hodometro.Text = "";
             Hodometro.IsVisible = false;
             Nome.Text = "";
-            Id.Text = "";
+            IdC.Text = "";
             Nome.IsVisible = false;
             model = 0;
         }
@@ -129,7 +129,7 @@ namespace Adiministrador_Financeiro.Views
                 List<ClienteModel> vv = cli.Get();
 
                 ClienteModel vb = vv[0];
-                Id.Text = vb.Id.ToString();
+                IdC.Text = vb.Id.ToString();
                 Nome.Text = vb.Name.ToString();
             }
             catch
@@ -180,7 +180,7 @@ namespace Adiministrador_Financeiro.Views
                 sele.Trim();
                 string[] aux = sele.Split('-');
                 Nome.Text = aux[1];
-                Id.Text = aux[0];
+                IdC.Text = aux[0];
                 if (model == 2)
                 {
                     int i = Int16.Parse(aux[0]);
@@ -210,14 +210,16 @@ namespace Adiministrador_Financeiro.Views
                     case 1:
                         ClienteModel cli = new ClienteModel();
                         cli.Name = Nome.Text;
-                        if (Id.Text.Trim() == "")
+                        if (IdC.Text.Trim() == "")
                         {
                             contexto.insert(cli);
+                            Usuario.Text=cli.Name;
                         }
                         else
                         {
-                            cli.Id = Int16.Parse(Id.Text);
+                            cli.Id = Int16.Parse(IdC.Text);
                             contexto.Update(cli);
+                            Usuario.Text = cli.Name;
                         }
                         break;
                     case 2:
@@ -226,13 +228,13 @@ namespace Adiministrador_Financeiro.Views
                             VeicoloModel vel = new VeicoloModel();
                             vel.Name = Nome.Text;
                             vel.Hodometro = Hodometro.Text;
-                            if (Id.Text.Trim() == "")
+                            if (IdC.Text.Trim() == "")
                             {
                                 contexto.insert(vel);
                             }
                             else
                             {
-                                vel.Id = Int16.Parse(Id.Text);
+                                vel.Id = Int16.Parse(IdC.Text);
                                 contexto.Update(vel);
                             }
                         }
@@ -245,26 +247,26 @@ namespace Adiministrador_Financeiro.Views
                     case 3:
                         BancoModel ban = new BancoModel();
                         ban.Name = Nome.Text;
-                        if (Id.Text.Trim() == "")
+                        if (IdC.Text.Trim() == "")
                         {
                             contexto.insert(ban);
                         }
                         else
                         {
-                            ban.Id = Int16.Parse(Id.Text);
+                            ban.Id = Int16.Parse(IdC.Text);
                             contexto.Update(ban);
                         }
                         break;
                     case 4:
                         PostoModel pos = new PostoModel();
                         pos.Name = Nome.Text;
-                        if (Id.Text.Trim() == "")
+                        if (IdC.Text.Trim() == "")
                         {
                             contexto.insert(pos);
                         }
                         else
                         {
-                            pos.Id = Int16.Parse(Id.Text);
+                            pos.Id = Int16.Parse(IdC.Text);
                             contexto.Update(pos);
                         }
                         break;

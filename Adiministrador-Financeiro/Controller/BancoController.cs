@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Adiministrador.Controller
+namespace Adiministrador_Financeiro.Controller
 {
-    internal class RelatorioContas
+    internal class BancoController
     {
-
     }
 }

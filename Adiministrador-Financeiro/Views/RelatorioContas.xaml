@@ -1,10 +1,29 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Adiministrador_Financeiro.Views.RelatorioContas">
-  <ContentView.Content>
-      <StackLayout>
-          <Label x:Name="nome" Text="Hello Xamarin.Forms!" />
-      </StackLayout>
-  </ContentView.Content>
-</ContentView>
+
+    <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
+        <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" >
+            <Button BackgroundColor="AliceBlue" ContentLayout="Top , 20"
+               ImageSource="/Resources/drawable/fgt.jpeg" Text="Icon"
+                            />
+            <Button ContentLayout="Top, 20"
+                            BackgroundColor="Aqua"
+                           ImageSource="/Resources/drawable/gas.jpeg" 
+                Text="Gasolina" 
+                            />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" >
+            <Button BackgroundColor="AliceBlue" ContentLayout="Top , 20"
+               ImageSource="/Resources/drawable/fgt.jpeg" Text="Icon"
+                            />
+            <Button ContentLayout="Top, 20"
+                            BackgroundColor="Aqua"
+                           ImageSource="/Resources/drawable/gas.jpeg" 
+                Text="Gasolina" 
+                            />
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

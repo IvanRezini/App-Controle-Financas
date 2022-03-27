@@ -4,7 +4,7 @@
              x:Class="Adiministrador_Financeiro.Views.Configuracao">
     <StackLayout BackgroundColor="Aqua">
         <Frame BackgroundColor="Black" Padding="24" CornerRadius="1">
-            <Label x:Name="Usuario" Text="Ivan Carlos Rezini" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            <Label x:Name="Usuario" Text="" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
 
         <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="5,5,5,5">
@@ -25,7 +25,7 @@
                                 FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
                         </ViewCell>
                         <ViewCell x:Name="celulaId" >
-                            <Label x:Name="Id" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"
+                            <Label x:Name="IdC" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"
                                    VerticalTextAlignment="Center"/>
                         </ViewCell>
                         <ViewCell x:Name="celulaNome">

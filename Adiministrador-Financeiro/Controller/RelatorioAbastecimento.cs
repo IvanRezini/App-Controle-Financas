@@ -8,10 +8,10 @@ namespace Adiministrador.Controller
 {
     internal class RelatorioAbastecimento
     {
-        public List<RelatorioAbastecimentoModel> Relatorio()
+        public List<RelatorioAbastecimentoModel> Relatorio(DateTime inicio, DateTime fim, int veicolo)
         {
             RelatorioAbastecimentoDao rd = new RelatorioAbastecimentoDao();
-            List<RelatorioAbastecimentoModel>rm  = rd.rela();
+            List<RelatorioAbastecimentoModel>rm  = rd.rela(inicio,fim,veicolo);
 
             RelatorioAbastecimentoModel aux = new RelatorioAbastecimentoModel();
             
@@ -20,7 +20,7 @@ namespace Adiministrador.Controller
             foreach (var s in rm)
             {
                 aux = new RelatorioAbastecimentoModel();
-                aux.Data = s.Date.ToString("dd/MM/yy");
+                aux.Data = s.Date;
                 aux.ValorLitro = s.ValorLitro;
                 aux.LitrosTotal = s.LitrosTotal;
                 aux.ValorTotal = ((decimal.Parse(s.ValorLitro)) * (decimal.Parse(s.LitrosTotal))).ToString("N3");

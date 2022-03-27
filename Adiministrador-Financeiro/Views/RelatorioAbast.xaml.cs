@@ -18,6 +18,7 @@ namespace Adiministrador_Financeiro.Views
         {
             InitializeComponent();
             nome.Text = usuario;
+            this.CaregarMenu();
         }
         public void CaregarMenu()
         {
@@ -31,7 +32,7 @@ namespace Adiministrador_Financeiro.Views
                     VeicoloModel pr = vv[i];
                     aux.Add(pr.Id + " - " + pr.Name);
                 }
-                Selecao.Title = "Selecione um Veicolo para alterar.";
+                Selecao.Title = "Selecione um Veicolo:";
                 foreach (string x in aux)
                 {
                     Selecao.Items.Add(x);
@@ -39,14 +40,31 @@ namespace Adiministrador_Financeiro.Views
             }
             catch
             {
-                DisplayAlert("Falha", "Falha ao caregar Dados", "Ok");
+                DisplayAlert("Falha", "Falha ao caregar Veicolos", "Ok");
+                Navigation.PopAsync();
             }
-        }
+        
+    }
 
 
         async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Relatorio());
+            DateTime inicio = dateInicio.Date;
+            DateTime fim = dateFim.Date;
+            int IdVeicolo = 0;/// 0 é o padrao para nem um veicolo selecionado
+            /*
+             * Verifiva se foi selecionado um veicolo
+             */
+            if (Selecao.SelectedIndex >= 0)
+            {
+                string aux1 = Selecao.SelectedItem.ToString();
+                aux1.Trim();
+                string[] aux = aux1.Split('-');
+                IdVeicolo = int.Parse(aux[0]);
+            }
+            await DisplayAlert("Falha", "Id "+IdVeicolo+" data\n"+inicio+"\n"+fim, "Ok");//////////////////
+
+            await Navigation.PushModalAsync(new Relatorio(inicio,fim,IdVeicolo));
         }
 
     }

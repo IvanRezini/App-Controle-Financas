@@ -11,6 +11,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controller\BancoController.cs" />
+    <Compile Remove="Model\RelatorioC.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Model\RelatorioC.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="PCLExt.FileStorage" Version="1.4.1.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="System.Collections" Version="4.3.0" />
@@ -19,9 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Model\RelatorioC.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\Abastecimento.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

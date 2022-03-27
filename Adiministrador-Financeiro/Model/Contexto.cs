@@ -25,6 +25,7 @@ namespace Adiministrador.Model
             conexao.CreateTable<ReceitaModel>();
             conexao.CreateTable<SaquesModel>();
             conexao.CreateTable<ContasModel>();
+           
 
         }
         public void insert<T>(T modelo)
@@ -39,7 +40,7 @@ namespace Adiministrador.Model
         {
             conexao.Delete(modelo);
         }
-       
+     
         
         
     }

@@ -52,7 +52,7 @@ namespace Adiministrador_Financeiro.Views
                             contasModel.Valor = Valor.Text;
                             string[] subs = Banco.SelectedItem.ToString().Trim().Split(' ');
                             contasModel.IdBanco = Int16.Parse(subs[0]);
-                            contasModel.Data = date.Date;
+                            contasModel.Data = date.Date.ToString("yyyy-MM-dd");
                             string[] aux = Conta.SelectedItem.ToString().Trim().Split(' ');
                             contasModel.IdConta = Int16.Parse(aux[0]);
                             Contexto con = new Contexto();

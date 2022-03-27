@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using static Xamarin.Essentials.Permissions;
-
 namespace Adiministrador_Financeiro.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -23,10 +21,11 @@ namespace Adiministrador_Financeiro.Views
             this.caregarMenus();
 
         }
+       
 
-        String Hodometro = "";/// <summary>
-                              /// Salvar o hodometro inicial.
-                              /// </summary>
+        /*
+           * Carrega os menus iniciais
+           */
         private void caregarMenus()
         {
             try
@@ -36,7 +35,7 @@ namespace Adiministrador_Financeiro.Views
                 List<PostoModel> pp = p.Get();
                 for (int i = 0; i < pp.Count; i++)
                 {
-PostoModel pr = pp[i];
+                    PostoModel pr = pp[i];
                     aux.Add(pr.Id + " - " + pr.Name);
                 }
                 Postos.Title = "Selecione um Posto";
@@ -73,7 +72,25 @@ PostoModel pr = pp[i];
                 Navigation.PopAsync();
             }
         }
-
+        /*
+        * checar a forma de pagamento
+        */
+        private string verificar()
+        {
+            string resposta = "";
+            if (Dinheiro.IsChecked)
+            {
+                resposta = "Dinheiro";
+            }
+            if (CartaoPix.IsChecked)
+            {
+                resposta = "Cartao / Pix";
+            }
+            return resposta;
+        }
+        /*
+           * Verifica se todos os campos estão preechidos coretament
+           */
         private async void salvar_Clicked(object sender, EventArgs e)
         {
             this.preecherCampos();
@@ -88,47 +105,55 @@ PostoModel pr = pp[i];
                     if (result)
                     {
                         result = Decimal.TryParse(total.Text, out n);
-if (result)
-{
-                            if (Postos.SelectedIndex >= 0 || nomePosto.Text.Length > 10)
+                        string aux = verificar();
+                        if (aux!="")
+                        {
+                            if (result)
                             {
-                                result = Decimal.TryParse(km.Text, out n);
-                                if (result)
+                                if (Postos.SelectedIndex >= 0 || nomePosto.Text.Length > 10)
                                 {
-                                    if (await DisplayAlert("Confirmar", "Data: " + date.Date.ToString() + "\nTotal: R$ " + total.Text + "\nLitros de gasolina: " +
-                                        totalLitros.Text + "\nValor do litro: R$ " + vlLitro.Text + "\nVeiculo: " +
-                                        Veicolo.SelectedItem.ToString() + "\nHodometro: " + ((Decimal.Parse(km.Text)) + (Decimal.Parse(kmTotal.Text))) +
-                                        "\nKm percoridos: " + km.Text + "\nMedia: " + ((Decimal.Parse(km.Text)) / (Decimal.Parse(totalLitros.Text))).ToString("F3")
-                                        , "Ok", "Cancel"))
+                                    result = Decimal.TryParse(km.Text, out n);
+                                    if (result)
                                     {
-                                        this.salvar();
+                                        if (await DisplayAlert("Confirmar", "Data: " + date.Date.ToString("d") + "\nTotal: R$ " + total.Text + "\nLitros de gasolina: " +
+                                            totalLitros.Text + "\nValor do litro: R$ " + vlLitro.Text +"\nPagamento: "+verificar()+ "\nVeiculo: " +
+                                            Veicolo.SelectedItem.ToString() + "\nHodometro: " + ((Decimal.Parse(km.Text)) + (Decimal.Parse(kmTotal.Text))) +
+                                            "\nKm percoridos: " + km.Text + "\nMedia: " + ((Decimal.Parse(km.Text)) / (Decimal.Parse(totalLitros.Text))).ToString("F3")
+                                            , "Ok", "Cancel"))
+                                        {
+                                            this.salvar();
+                                        }
+                                        else
+                                        {
+                                            await DisplayAlert("Falha", "cancelando", "Ok");
+                                            this.limparCampos();
+                                        }
                                     }
                                     else
                                     {
-                                        await DisplayAlert("Falha", "cancelando", "Ok");
-                                        this.limparCampos();
+                                        await DisplayAlert("Falha", "Informe o km percoridos", "Ok");
                                     }
                                 }
                                 else
                                 {
-                                    await DisplayAlert("Falha", "Informe o km percoridos", "Ok");
+                                    if (nomePosto.Text.Length > 0 && nomePosto.Text.Length < 10)
+                                    {
+                                        await DisplayAlert("Falha", "Nome do posto muito curto", "Ok");
+                                    }
+                                    else
+                                    {
+                                        await DisplayAlert("Falha", "Informe um posto ou selecione  um", "Ok");
+                                    }
                                 }
                             }
                             else
                             {
-                                if (nomePosto.Text.Length > 0 && nomePosto.Text.Length < 10)
-                                {
-                                    await DisplayAlert("Falha", "Nome do posto muito curto", "Ok");
-                                }
-                                else
-                                {
-                                    await DisplayAlert("Falha", "Informe um posto ou selecione  um", "Ok");
-                                }
+                                await DisplayAlert("Falha", "Informe valor total", "Ok");
                             }
                         }
                         else
                         {
-                            await DisplayAlert("Falha", "Informe valor total", "Ok");
+                            await DisplayAlert("Falha", "Selecione uma forma de Pagamento", "Ok");
                         }
                     }
                     else
@@ -159,10 +184,13 @@ if (result)
                 VeicoloDao vv = new VeicoloDao();
                 VeicoloModel veicoloModel = vv.GetID(i);
                 kmTotal.Text = veicoloModel.Hodometro;
-                Hodometro = veicoloModel.Hodometro;
             }
         }
-
+        /*
+           * Verifica e preenche o campo que falta 
+           * sendo o usuario apenas preecher dois campos o terceiro 
+           * é aotomatizado
+           */
         private void preecherCampos()
         {
             Decimal n;
@@ -207,25 +235,37 @@ if (result)
             }
 
         }
-
+        /*
+           * Apos o abastecimento ser cadastrado limpa e 0 os campos
+           */
         public void limparCampos()
         {
             Veicolo.SelectedItem = null;
             total.Text = "";
             totalLitros.Text = "";
             vlLitro.Text = "";
-nomePosto.Text = "";
+            nomePosto.Text = "";
             Postos.SelectedItem = null;
             km.Text = "";
             kmTotal.Text = "";
+            Dinheiro.IsChecked = false;
+            CartaoPix.IsChecked = false;
         }
-
+        /*
+            * Salva o abastecimeto
+            */
         public async void salvar()
         {
+            /*
+            * verifica se um posto foi selecionado ou se
+            * foi inserido um novo posto caso tenha sido inserido ele 
+            * é salvo no banco.
+            */
             int idPosto = 0;
             Contexto con = new Contexto();
-            if (Postos.SelectedIndex <= 0)
+            if (Postos.SelectedIndex < 0)
             {
+
                 PostoModel novo = new PostoModel();
                 novo.Name = nomePosto.Text;
 
@@ -242,11 +282,24 @@ nomePosto.Text = "";
                 }
 
             }
-else
-{
+            else
+            {
                 string[] aux = Postos.SelectedItem.ToString().Trim().Split('-');
                 idPosto = int.Parse(aux[0]);
 
+            }
+            /*
+             * verifica forma de pagamento 
+             * salva 1 para dinheiro 
+             * e 2 para outra forma
+             */
+            int forma=0;
+            if (Dinheiro.IsChecked)
+            {
+                forma = 1;
+            }
+            else {
+                forma = 2;
             }
             try
             {
@@ -259,7 +312,9 @@ else
                 ab.Veicolo = int.Parse(aux[0]);
                 ab.LitrosTotal = totalLitros.Text;
                 ab.ValorLitro = vlLitro.Text;
-                ab.Date = date.Date;
+                ab.FormaPagamento = forma ;
+                aux1 = date.Date.ToString("yyyy-mm-dd");
+                ab.Date = aux1;
                 ab.kmPercorido = km.Text;
                 ab.Hodometro = ((Decimal.Parse(km.Text)) + (Decimal.Parse(kmTotal.Text))).ToString();
                 con.insert(ab);
@@ -269,7 +324,7 @@ else
                 veicoloModel.Name = aux[1];
                 veicoloModel.Hodometro = ((Decimal.Parse(km.Text)) + (Decimal.Parse(kmTotal.Text))).ToString();
                 con.Update(veicoloModel);
-                await DisplayAlert("Sucesso", "Abastecimento salvo com exito!!! ", "Ok");
+                await DisplayAlert("Sucesso", "Abastecimento salvo com exito!!!", "Ok");
                 this.limparCampos();
             }
             catch
@@ -278,7 +333,10 @@ else
             }
 
         }
-
+        /*
+           * Valida os campos do posto para não ocorer que um posto seja selecionado e
+           * um novo posto seja inserido
+           */
         private void Postos_SelectedIndexChanged(object sender, EventArgs e)
         {
             nomePosto.Text = "";
@@ -287,10 +345,10 @@ else
 
         private void nomePosto_TextChanged(object sender, TextChangedEventArgs e)
         {
-if (Postos.SelectedIndex > 0)
+            if (Postos.SelectedIndex > 0)
             {
-Postos.SelectedItem = null;
-}
+                Postos.SelectedItem = null;
+            }
         }
     }
 }
