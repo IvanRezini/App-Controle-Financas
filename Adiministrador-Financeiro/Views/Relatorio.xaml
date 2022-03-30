@@ -2,56 +2,61 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Adiministrador_Financeiro.Views.Relatorio">
-    <StackLayout  Padding="5,5,5,5" Spacing="0" >
-        <ListView x:Name="Listagem">
+    <ScrollView HorizontalScrollBarVisibility="Always" VerticalScrollBarVisibility="Always" Orientation="Horizontal" >
+        <StackLayout>
+        <ListView x:Name="Listagem" VerticalOptions="FillAndExpand" WidthRequest="600">
             <ListView.Header>
-                <Grid BackgroundColor="Black" ColumnSpacing="0" HorizontalOptions="Fill">
+                <Grid BackgroundColor="Black"  ColumnSpacing="0" HorizontalOptions="FillAndExpand" >
                     <Grid.ColumnDefinitions >
-                        <ColumnDefinition Width="3*" />
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="3*" />
-                    </Grid.ColumnDefinitions>
-                    <Label Text="Data" HorizontalOptions="Fill"  Grid.Column="0" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-                    <Label Text="Vl Litro" HorizontalOptions="Fill" Grid.Column="1" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-                    <Label Text="L Total" HorizontalOptions="Fill" Grid.Column="2" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-                    <Label Text="Total R$" HorizontalOptions="Fill" Grid.Column="3" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-                    <Label Text="Média" HorizontalOptions="Fill" Grid.Column="4" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-                    <Label Text="Km" HorizontalOptions="Fill" Grid.Column="5" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-                    <Label Text="Posto" HorizontalOptions="Fill" Grid.Column="6" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+
+                            <ColumnDefinition Width="12*" />
+                            <ColumnDefinition Width="12*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="9*" />
+                            <ColumnDefinition Width="14*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="18*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Veicolo" HorizontalOptions="FillAndExpand"  Grid.Column="0" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Data" HorizontalOptions="FillAndExpand"  Grid.Column="1" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                    <Label Text="Vl Litro" HorizontalOptions="FillAndExpand" Grid.Column="2" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                    <Label Text="L Total" HorizontalOptions="FillAndExpand" Grid.Column="3" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                    <Label Text="Total R$" HorizontalOptions="FillAndExpand" Grid.Column="4" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                    <Label Text="Média" HorizontalOptions="FillAndExpand" Grid.Column="5" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                    <Label Text="Km" HorizontalOptions="FillAndExpand" Grid.Column="6" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                    <Label Text="Posto" HorizontalOptions="FillAndExpand" Grid.Column="7" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
                 </Grid>
             </ListView.Header>
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
+                    <ViewCell Height="200" >
                         <Grid BackgroundColor="Black" ColumnSpacing="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="3*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text ="{Binding Data}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
-                            <Label Grid.Column="1" Text ="{Binding ValorLitro}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
-                            <Label Grid.Column="2" Text ="{Binding LitrosTotal}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
-                            <Label Grid.Column="3" Text ="{Binding ValorTotal}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
-                            <Label Grid.Column="4" Text ="{Binding Media}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
-                            <Label Grid.Column="5" Text ="{Binding kmPercorido}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
-                            <Label Grid.Column="6" Text ="{Binding Posto}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                    <ColumnDefinition Width="12*" />
+                                    <ColumnDefinition Width="12*" />
+                                    <ColumnDefinition Width="10*" />
+                                    <ColumnDefinition Width="9*" />
+                                    <ColumnDefinition Width="14*" />
+                                    <ColumnDefinition Width="10*" />
+                                    <ColumnDefinition Width="10*" />
+                                    <ColumnDefinition Width="18*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text ="{Binding Veicolo}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="1" Text ="{Binding Data}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="2" Text ="{Binding ValorLitro}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="3" Text ="{Binding LitrosTotal}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="4" Text ="{Binding ValorTotal}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="5" Text ="{Binding Media}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="6" Text ="{Binding kmPercorido}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="7" Text ="{Binding Posto}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
-
-    </StackLayout>
+        </StackLayout>
+    </ScrollView>
     </ContentPage>
     

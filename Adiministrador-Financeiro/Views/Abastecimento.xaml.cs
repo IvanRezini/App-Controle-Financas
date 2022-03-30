@@ -313,7 +313,7 @@ namespace Adiministrador_Financeiro.Views
                 ab.LitrosTotal = totalLitros.Text;
                 ab.ValorLitro = vlLitro.Text;
                 ab.FormaPagamento = forma ;
-                aux1 = date.Date.ToString("yyyy-mm-dd");
+                aux1 = date.Date.ToString("yyyy-MM-dd");
                 ab.Date = aux1;
                 ab.kmPercorido = km.Text;
                 ab.Hodometro = ((Decimal.Parse(km.Text)) + (Decimal.Parse(kmTotal.Text))).ToString();

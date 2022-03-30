@@ -6,6 +6,7 @@ namespace Adiministrador.Model
 {
     class RelatorioAbastecimentoModel
     {
+        public string Veicolo { get; set; }
         public string Posto { get; set; }
         public string LitrosTotal { get; set; }
         public string ValorLitro { get; set; }
@@ -15,6 +16,6 @@ namespace Adiministrador.Model
         public string Media { get; set; }
         public string ValorTotal { get; set; }
         public string Data { get; set; }
-
+        public string Cor { get; set; }///cor da linha do relatorio
     }
 }

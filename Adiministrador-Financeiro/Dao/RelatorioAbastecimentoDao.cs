@@ -13,10 +13,13 @@ namespace Adiministrador.Dao
     {
         public List<RelatorioAbastecimentoModel> rela(DateTime inicio, DateTime fim, int veicolo)///veicolo id 0 padrão para nem um veicolo selecionado
         {
-            string auxInicio = inicio.ToString("yyyy - mm - dd");
-            string auxFim = fim.ToString("yyyy-mm-dd");
-            string query = "SELECT P.Name AS Posto, A.LitrosTotal, A.ValorLitro, A.Date, A.kmPercorido, A.Hodometro FROM" +
-                " AbastecimentoModel AS A  JOIN PostoModel AS P ON A.Posto = P.Id WHERE A.Date BETWEEN '"+
+            string auxInicio = inicio.ToString("yyyy-MM-dd");
+            string auxFim = fim.ToString("yyyy-MM-dd");
+            string query = "SELECT V.Name AS Veicolo, P.Name AS Posto, A.LitrosTotal, A.ValorLitro, A.Date, A.kmPercorido, A.Hodometro FROM" +
+                " AbastecimentoModel AS A " +
+                " JOIN PostoModel AS P ON A.Posto = P.Id " +
+                "JOIN VeicoloModel AS V ON A.Veicolo = V.Id " +
+                "WHERE A.Date BETWEEN '" +
                  auxInicio+ "' AND '" + auxFim + "'"; 
 
             if (veicolo > 0)

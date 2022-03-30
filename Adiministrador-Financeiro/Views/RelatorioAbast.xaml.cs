@@ -62,8 +62,7 @@ namespace Adiministrador_Financeiro.Views
                 string[] aux = aux1.Split('-');
                 IdVeicolo = int.Parse(aux[0]);
             }
-            await DisplayAlert("Falha", "Id "+IdVeicolo+" data\n"+inicio+"\n"+fim, "Ok");//////////////////
-
+            
             await Navigation.PushModalAsync(new Relatorio(inicio,fim,IdVeicolo));
         }
 
