@@ -43,14 +43,14 @@
                                     <ColumnDefinition Width="10*" />
                                     <ColumnDefinition Width="18*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text ="{Binding Veicolo}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
-                                <Label Grid.Column="1" Text ="{Binding Data}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
-                                <Label Grid.Column="2" Text ="{Binding ValorLitro}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
-                                <Label Grid.Column="3" Text ="{Binding LitrosTotal}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
-                                <Label Grid.Column="4" Text ="{Binding ValorTotal}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
-                                <Label Grid.Column="5" Text ="{Binding Media}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
-                                <Label Grid.Column="6" Text ="{Binding kmPercorido}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
-                                <Label Grid.Column="7" Text ="{Binding Posto}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="0" Text ="{Binding Veicolo}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
+                                <Label Grid.Column="1" Text ="{Binding Data}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
+                                <Label Grid.Column="2" Text ="{Binding ValorLitro}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
+                                <Label Grid.Column="3" Text ="{Binding LitrosTotal}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
+                                <Label Grid.Column="4" Text ="{Binding ValorTotal}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
+                                <Label Grid.Column="5" Text ="{Binding Media}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
+                                <Label Grid.Column="6" Text ="{Binding kmPercorido}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
+                                <Label Grid.Column="7" Text ="{Binding Posto}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

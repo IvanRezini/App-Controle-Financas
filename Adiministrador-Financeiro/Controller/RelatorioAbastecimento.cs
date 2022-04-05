@@ -51,17 +51,17 @@ namespace Adiministrador.Controller
 
             aux = new RelatorioAbastecimentoModel();
             aux.Data = "Toatal L:";
-            aux.Cor = "Lime";
+            aux.Cor = "LightSteelBlue";
             aux.ValorLitro = tL.ToString("N2");
             relatorioFinal.Add(aux);
             aux = new RelatorioAbastecimentoModel();
             aux.Data = "Toatal G:";
-            aux.Cor = "Lime";
+            aux.Cor = "LightSteelBlue";
             aux.ValorLitro = tG.ToString("N2");
             relatorioFinal.Add(aux);
             aux = new RelatorioAbastecimentoModel();
             aux.Data = "Media P:";
-            aux.Cor = "Lime";
+            aux.Cor = "LightSteelBlue";
             aux.ValorLitro = (tK/tL).ToString("N3");
            
             relatorioFinal.Add(aux);
