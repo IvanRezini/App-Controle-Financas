@@ -9,7 +9,7 @@ namespace Adiministrador_Financeiro.Controller
     {
         public void Iniciar()
         {
-            BancoDao bb = new BancoDao();
+            ContaDao bb = new ContaDao();
             var resposta = bb.GetID(1);
             if (resposta == null)
             {

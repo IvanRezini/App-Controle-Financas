@@ -1,10 +1,5 @@
-﻿using Adiministrador.Dao;
-using Adiministrador.Model;
+﻿using Adiministrador.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,70 +13,36 @@ namespace Adiministrador_Financeiro.Views
         {
             InitializeComponent();
             nome.Text = usuario;
-            this.caregarMenus();
-        }
-        private void caregarMenus()
-        {
-            try
-            {
-                BancoDao v = new BancoDao();
-                var aux = new List<String>();
-                List<BancoModel> vv = v.Get();
-                for (int i = 0; i < vv.Count; i++)
-                {
-                    BancoModel pr = vv[i];
-                    aux.Add(pr.Id + " - " + pr.Name);
-                }
-                Banco.Title = "Selecione um banco.";
-                foreach (string x in aux)
-                {
-
-                    Banco.Items.Add(x);
-                }
-            }
-            catch
-            {
-                DisplayAlert("Falha", "Falha ao caregar Dados", "Ok");
-            }
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            SaquesModel bancoModel = new SaquesModel();
+            FinancasModel financasModel = new FinancasModel();
             Decimal n;
             bool result = Decimal.TryParse(Valor.Text, out n);
             if (result)
             {
-                if (Banco.SelectedIndex >= 0)
+                if (await DisplayAlert("Saque", "Valor = " + Valor.Text + "\nData = " + date.Date.ToString("dd-MM-yyyy"), "ok", "Cancelar"))
                 {
-
-                    if (await DisplayAlert("Saque", "Valor = " + Valor.Text + "\nData = " + date.Date.ToString("dd-MM-yyyy") + "\nOrigem do saque: = " + Banco.SelectedItem.ToString(), "ok", "Cancelar"))
+                    financasModel.Valor = Valor.Text;
+                    financasModel.EntradaSaida = "S";//E entrada, S saida, N para pagamento em dinheiro no qual ja foi sacado
+                    financasModel.Data = date.Date.ToString("yyyy-MM-");
+                    Contexto con = new Contexto();
+                    try
                     {
-                        bancoModel.Valor = Valor.Text;
-                        string[] subs = Banco.SelectedItem.ToString().Trim().Split(' ');
-                        bancoModel.IdBanco = Int16.Parse(subs[0]);
-                        bancoModel.Data = date.Date.ToString("yyyy-MM-");
-                        Contexto con = new Contexto();
-                        try
-                        {
-                            con.insert(bancoModel);
-                            await DisplayAlert("Cadastro", "Efetuado", "OK");
-                            this.limparCampos();
-                        }
-                        catch (Exception er)
-                        {
-                            await DisplayAlert("Cadastro", "Falha\n" + er, "OK");
-                        }
-                    }
-                    else
-                    {
-                        await DisplayAlert("Alert", "Cancelado", "OK");
+                        con.insert(financasModel);
+                        await DisplayAlert("Cadastro", "Efetuado", "OK");
                         this.limparCampos();
+                    }
+                    catch (Exception er)
+                    {
+                        await DisplayAlert("Cadastro", "Falha\n" + er, "OK");
                     }
                 }
                 else
                 {
-                    await DisplayAlert("Alert", "Selecione uma origem", "OK");
+                    await DisplayAlert("Alert", "Cancelado", "OK");
+                    this.limparCampos();
                 }
             }
             else
@@ -91,8 +52,7 @@ namespace Adiministrador_Financeiro.Views
         }
         public void limparCampos()
         {
-            Banco.SelectedItem = null;
             Valor.Text = "";
         }
-        }
+    }
 }

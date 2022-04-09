@@ -16,6 +16,5 @@ namespace Adiministrador.Model
         public string Date { get; set; }
         public string kmPercorido {  get; set;}
         public string Hodometro { get; set; }
-        public int FormaPagamento { get; set; }/// 1 para dinheiro 2 para cartao e pix
     }
 }

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Adiministrador_Financeiro.Views.RelatorioFinancas">
+    <ScrollView HorizontalScrollBarVisibility="Always" VerticalScrollBarVisibility="Always" Orientation="Horizontal" >
+        <StackLayout>
+            <ListView x:Name="Listagem" VerticalOptions="FillAndExpand">
+                <ListView.Header>
+                    <Grid BackgroundColor="Black"  ColumnSpacing="0" HorizontalOptions="FillAndExpand" >
+                        <Grid.ColumnDefinitions >
+
+                            <ColumnDefinition Width="12*" />
+                            <ColumnDefinition Width="12*" />
+                            <ColumnDefinition Width="10*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Data" HorizontalOptions="FillAndExpand"  Grid.Column="0" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Conta" HorizontalOptions="FillAndExpand"  Grid.Column="1" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Valor" HorizontalOptions="FillAndExpand" Grid.Column="2" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                       </Grid>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="200" >
+                            <Grid BackgroundColor="Black" ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="12*" />
+                                    <ColumnDefinition Width="12*" />
+                                    <ColumnDefinition Width="10*" />
+                                   
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text ="Binding Veicolo" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
+                                <Label Grid.Column="1" Text ="Binding Data" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
+                                <Label Grid.Column="2" Text ="Binding ValorLitro" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
+                               </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
+    

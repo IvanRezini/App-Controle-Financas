@@ -22,9 +22,6 @@
                         <ViewCell>
                             <DatePicker x:Name="date" TextColor="Black" Format="dd/MM/yyyy" HorizontalOptions="Center" />
                         </ViewCell>
-                        <ViewCell>
-                            <Picker x:Name="Banco" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
-                        </ViewCell>
                     </TableSection>
                 </TableRoot>
             </TableView>

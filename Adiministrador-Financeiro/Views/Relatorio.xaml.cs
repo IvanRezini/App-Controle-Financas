@@ -37,5 +37,3 @@ namespace Adiministrador_Financeiro.Views
         }
     }
 }
-
-////https://stackoverflow.com/questions/45870535/xamarin-forms-multi-column-table-gui

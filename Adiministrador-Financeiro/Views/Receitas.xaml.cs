@@ -1,10 +1,6 @@
-﻿using Adiministrador.Dao;
-using Adiministrador.Model;
+﻿using Adiministrador.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -22,28 +18,6 @@ namespace Adiministrador_Financeiro.Views
         }
         private void caregarMenus()
         {
-            try
-            {
-                BancoDao v = new BancoDao();
-                var aux = new List<String>();
-                List<BancoModel> vv = v.Get();
-                for (int i = 0; i < vv.Count; i++)
-                {
-                    BancoModel pr = vv[i];
-                    aux.Add(pr.Id + " - " + pr.Name);
-                }
-                Banco.Title = "Selecione um banco.";
-                foreach (string x in aux)
-                {
-
-                    Banco.Items.Add(x);
-                }
-            }
-            catch
-            {
-                DisplayAlert("Falha", "Falha ao caregar Dados", "Ok");
-            }
-
             Origem.Title = "Selecione uma entrada";
             var opcoes = new List<string> { "1 - Salario", "2 - Extra", "3 - Doação", "4 - Outro" };
             foreach (string posto in opcoes)
@@ -55,48 +29,40 @@ namespace Adiministrador_Financeiro.Views
 
         private async void salvar_Clicked(object sender, EventArgs e)
         {
-            ReceitaModel receitaModel = new ReceitaModel();
+            FinancasModel financasModel = new FinancasModel();
             Decimal n;
             bool result = Decimal.TryParse(total.Text, out n);
             if (result)
             {
                 if (Origem.SelectedIndex >= 0)
                 {
-                    if (Banco.SelectedIndex >= 0)
+
+                    if (await DisplayAlert("Entrada", "Valor = " + total.Text + "\nData = " + date.Date.ToString("dd-MM-yyyy") + "\nOrigem = " + Origem.SelectedItem.ToString(), "ok", "Cancelar"))
                     {
-
-                        if (await DisplayAlert("Entrada", "Valor = " + total.Text + "\nData = " + date.Date.ToString("dd-MM-yyyy") + "\nOrigem = " + Origem.SelectedItem.ToString() + "\nBanco = " + Banco.SelectedItem.ToString(), "ok", "Cancelar"))
+                        financasModel.Valor = total.Text;
+                        string[] subs = Origem.SelectedItem.ToString().Trim().Split(' ');
+                        financasModel.Origem = Int16.Parse(subs[0]);
+                        financasModel.Data = date.Date.ToString("yyyy-MM-dd");
+                        financasModel.EntradaSaida = "E";//E entrada, S saida, N para pagamento em dinheiro no qual ja foi sacado
+                        Contexto con = new Contexto();
+                        try
                         {
-                            receitaModel.Valor = total.Text;
-                            string[] subs = Origem.SelectedItem.ToString().Trim().Split(' ');
-                            receitaModel.Origem = Int16.Parse(subs[0]);
-                            subs = Banco.SelectedItem.ToString().Trim().Split(' ');
-                            receitaModel.IdBanco = Int16.Parse(subs[0]);
-                            receitaModel.Data = date.Date.ToString("yyyy-MM-dd");
-                            Contexto con = new Contexto();
-                            try
-                            {
-                                con.insert(receitaModel);
-                                await DisplayAlert("Cadastro", "Efetuado", "OK");
-                            }
-                            catch (Exception er)
-                            {
-                                await DisplayAlert("Cadastro", "Falha\n" + er, "OK");
-                            }
-
+                            con.insert(financasModel);
+                            await DisplayAlert("Cadastro", "Efetuado", "OK");
                         }
-                        else
+                        catch (Exception er)
                         {
-                            await DisplayAlert("Alert", "Cancelado", "OK");
-                            total.Text = "";
-                            Origem.SelectedItem = -1;
+                            await DisplayAlert("Cadastro", "Falha\n" + er, "OK");
                         }
 
                     }
                     else
                     {
-                        await DisplayAlert("Alert", "Selecione um Destino", "OK");
+                        await DisplayAlert("Alert", "Cancelado", "OK");
+                        total.Text = "";
+                        Origem.SelectedItem = -1;
                     }
+
                 }
                 else
                 {

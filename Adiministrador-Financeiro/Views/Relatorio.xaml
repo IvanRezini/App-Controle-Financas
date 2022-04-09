@@ -9,8 +9,8 @@
                 <Grid BackgroundColor="Black"  ColumnSpacing="0" HorizontalOptions="FillAndExpand" >
                     <Grid.ColumnDefinitions >
 
-                            <ColumnDefinition Width="12*" />
-                            <ColumnDefinition Width="12*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="14*" />
                             <ColumnDefinition Width="10*" />
                             <ColumnDefinition Width="9*" />
                             <ColumnDefinition Width="14*" />
@@ -31,11 +31,11 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell Height="200" >
+                    <ViewCell >
                         <Grid BackgroundColor="Black" ColumnSpacing="0">
                             <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="12*" />
-                                    <ColumnDefinition Width="12*" />
+                                    <ColumnDefinition Width="10*" />
+                                    <ColumnDefinition Width="14*" />
                                     <ColumnDefinition Width="10*" />
                                     <ColumnDefinition Width="9*" />
                                     <ColumnDefinition Width="14*" />

@@ -14,7 +14,10 @@
                             <Picker x:Name="Conta" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
                         </ViewCell>
                         <ViewCell>
-                            <Picker x:Name="Banco" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                            <StackLayout Orientation="Horizontal" RadioButtonGroup.GroupName=" pagamento">
+                                <RadioButton x:Name="Dinheiro" Content="Dinheiro"  FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                                <RadioButton x:Name="CartaoPix" Content="Cartão / Pix" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                            </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <Entry x:Name="Valor" Placeholder="Total R$:" Keyboard="Numeric" PlaceholderColor="Black"

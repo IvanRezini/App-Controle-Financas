@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Adiministrador_Financeiro.Controller
 {
-    internal class RelatorioReceitas
+    internal class ReladorioFinancasController
     {
     }
 }

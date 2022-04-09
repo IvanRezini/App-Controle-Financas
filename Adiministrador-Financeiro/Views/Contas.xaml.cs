@@ -1,4 +1,5 @@
-﻿using Adiministrador.Model;
+﻿using Adiministrador.Dao;
+using Adiministrador.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,44 +22,63 @@ namespace Adiministrador_Financeiro.Views
         }
         private void caregarMenus()
         {
-            Conta.Title = "Selecione uma conta a pagar";
-            var opcoes = new List<string> { "1 - Agua", "2 - Luz", "3 - Condominio", "4 - Internet", "5 - Outras" };
-            foreach (string xx in opcoes)
-            {
-                Conta.Items.Add(xx);
-            }
-            Banco.Title = "Selecione um Banco";
-            opcoes = new List<string> { "1 - BB ", "2 - Caixa", "3 - Outro", "4 - Dinheiro" };
-            foreach (string xx in opcoes)
-            {
-                Banco.Items.Add(xx);
-            }
-        }
+                try
+                {
+                    ContaDao p = new ContaDao();
+                    var aux = new List<String>();
+                    List<ContasModel> pp = p.Get();
+                    for (int i = 0; i < pp.Count; i++)
+                    {
+                        ContasModel pr = pp[i];
+                        aux.Add(pr.Id + " - " + pr.Name);
+                    }
+                    Conta.Title = "Selecione uma conta a pagar";
+                    foreach (string x in aux)
+                    {
+                        Conta.Items.Add(x);
+                    }
+                }
+                catch
+                {
+                    DisplayAlert("Falha", "Falha ao carregar  o menu", "Ok");
+                }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+
+               
+            }
+
+            private async void Button_Clicked(object sender, EventArgs e)
         {
-            ContasModel contasModel = new ContasModel();
+            FinancasModel financasModel = new FinancasModel();
             Decimal n;
             bool result = Decimal.TryParse(Valor.Text, out n);
             if (Conta.SelectedIndex >= 0)
             {
-                if (Banco.SelectedIndex >= 0)
-                {
                     if (result)
                     {
 
-                        if (await DisplayAlert("Conta", "Conta: " + Conta.SelectedItem.ToString() + "\nValor = " + Valor.Text + "\nData = " + date.Date.ToString("dd-MM-yyyy") + "\nForma de pagamento: = " + Banco.SelectedItem.ToString(), "ok", "Cancelar"))
+                        if (await DisplayAlert("Conta", "Conta: " + Conta.SelectedItem.ToString() + "\nValor = " + Valor.Text + "\nData = " + date.Date.ToString("dd-MM-yyyy") + "\nForma de pagamento: = ", "ok", "Cancelar"))
                         {
-                            contasModel.Valor = Valor.Text;
-                            string[] subs = Banco.SelectedItem.ToString().Trim().Split(' ');
-                            contasModel.IdBanco = Int16.Parse(subs[0]);
-                            contasModel.Data = date.Date.ToString("yyyy-MM-dd");
+                            financasModel.Valor = Valor.Text;
+                            financasModel.Data = date.Date.ToString("yyyy-MM-dd");
                             string[] aux = Conta.SelectedItem.ToString().Trim().Split(' ');
-                            contasModel.IdConta = Int16.Parse(aux[0]);
+                            financasModel.IdConta = Int16.Parse(aux[0]);
+
+                        string forma ="";  //E entrada S saida N para pagamento em dinheiro no qual ja foi sacado
+                        if (Dinheiro.IsChecked)
+                        {
+                            forma = "N";
+                        }
+                        else
+                        {
+                            forma = "S";
+                        }
+
+                        financasModel.EntradaSaida = forma;
                             Contexto con = new Contexto();
                             try
                             {
-                                con.insert(contasModel);
+                                con.insert(financasModel);
                                 await DisplayAlert("Salvo", "Efetuado", "OK");
                             }
                             catch (Exception er)
@@ -70,15 +90,10 @@ namespace Adiministrador_Financeiro.Views
                         {
                             await DisplayAlert("Alert", "Cancelado", "OK");
                             Valor.Text = "";
-                            Banco.SelectedItem = -1;
                             Conta.SelectedItem = -1;
                         }
                     }
-                    else
-                    {
-                        await DisplayAlert("Alert", "Valor não coresponde a um numero.", "OK");
-                    }
-                }
+                 
                 else
                 {
                     await DisplayAlert("Alert", "Selecione como vai ser paga.", "OK");

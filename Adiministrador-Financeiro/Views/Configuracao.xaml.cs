@@ -17,7 +17,7 @@ namespace Adiministrador_Financeiro.Views
         int model = 0;/// <summary>
                       /// 1- Client
                       /// 2- veicolo
-                      /// 3-banco
+                      /// 3-Contas
                       /// 4- posto
                       /// Salva o modelo clicado.
                       /// </summary>
@@ -62,19 +62,19 @@ namespace Adiministrador_Financeiro.Views
         private void banco_Clicked(object sender, EventArgs e)
         {
             this.mostrarCampos();
-            Nome.Placeholder = "Cadastre um novo Banco";
+            Nome.Placeholder = "Cadastre uma nova conta";
             model = 3;
             try
             {
-                BancoDao v = new BancoDao();
+                ContaDao v = new ContaDao();
                 var aux = new List<String>();
-                List<BancoModel> vv = v.Get();
+                List<ContasModel> vv = v.Get();
                 for (int i = 0; i < vv.Count; i++)
                 {
-                    BancoModel pr = vv[i];
+                    ContasModel pr = vv[i];
                     aux.Add(pr.Id + " - " + pr.Name);
                 }
-                Selecao.Title = "Selecione um banco para alterar.";
+                Selecao.Title = "Selecione uma conta para alterar";
                 foreach (string x in aux)
                 {
 
@@ -245,7 +245,7 @@ namespace Adiministrador_Financeiro.Views
                         }
                         break;
                     case 3:
-                        BancoModel ban = new BancoModel();
+                        ContasModel ban = new ContasModel();
                         ban.Name = Nome.Text;
                         if (IdC.Text.Trim() == "")
                         {

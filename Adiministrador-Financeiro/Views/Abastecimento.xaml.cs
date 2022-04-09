@@ -288,18 +288,15 @@ namespace Adiministrador_Financeiro.Views
                 idPosto = int.Parse(aux[0]);
 
             }
-            /*
-             * verifica forma de pagamento 
-             * salva 1 para dinheiro 
-             * e 2 para outra forma
-             */
-            int forma=0;
+
+            string forma = "";  //E entrada S saida N para pagamento em dinheiro no qual ja foi sacado
             if (Dinheiro.IsChecked)
             {
-                forma = 1;
+                forma = "N";
             }
-            else {
-                forma = 2;
+            else
+            {
+                forma = "S";
             }
             try
             {
@@ -312,7 +309,6 @@ namespace Adiministrador_Financeiro.Views
                 ab.Veicolo = int.Parse(aux[0]);
                 ab.LitrosTotal = totalLitros.Text;
                 ab.ValorLitro = vlLitro.Text;
-                ab.FormaPagamento = forma ;
                 aux1 = date.Date.ToString("yyyy-MM-dd");
                 ab.Date = aux1;
                 ab.kmPercorido = km.Text;
@@ -324,7 +320,14 @@ namespace Adiministrador_Financeiro.Views
                 veicoloModel.Name = aux[1];
                 veicoloModel.Hodometro = ((Decimal.Parse(km.Text)) + (Decimal.Parse(kmTotal.Text))).ToString();
                 con.Update(veicoloModel);
-                await DisplayAlert("Sucesso", "Abastecimento salvo com exito!!!", "Ok");
+
+                FinancasModel ff = new FinancasModel();
+                ff.IdConta = 1;/// Padrao para abastecimento
+                ff.Valor= ((Decimal.Parse(totalLitros.Text)) + (Decimal.Parse(vlLitro.Text))).ToString("F3");
+                ff.Data = aux1;
+                ff.EntradaSaida=forma;
+                con.insert(ff);
+                 await DisplayAlert("Sucesso", "Abastecimento salvo com exito!!!", "Ok");
                 this.limparCampos();
             }
             catch

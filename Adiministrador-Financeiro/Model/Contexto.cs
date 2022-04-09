@@ -18,12 +18,10 @@ namespace Adiministrador.Model
             var arquivo = pasta.CreateFile("appcadastro", PCLExt.FileStorage.CreationCollisionOption.OpenIfExists);
             conexao = new SQLiteConnection(arquivo.Path);
             conexao.CreateTable<ClienteModel>();
-            conexao.CreateTable<BancoModel>();
+            conexao.CreateTable<FinancasModel>();
             conexao.CreateTable<PostoModel>();
             conexao.CreateTable<VeicoloModel>();
             conexao.CreateTable<AbastecimentoModel>();
-            conexao.CreateTable<ReceitaModel>();
-            conexao.CreateTable<SaquesModel>();
             conexao.CreateTable<ContasModel>();
            
 

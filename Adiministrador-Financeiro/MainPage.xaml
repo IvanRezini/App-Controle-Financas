@@ -55,7 +55,7 @@
                         <ViewCell >
                             <Button
                                     x:Name="extratoContas" Clicked="extratoContas_Clicked" Margin="2, 0, 2, 0"
-                                    Text="Extrato contas" TextColor="Black" BackgroundColor="Blue" FontSize="20"  FontAttributes="Bold"
+                                    Text="Extrato Finanças" TextColor="Black" BackgroundColor="Blue" FontSize="20"  FontAttributes="Bold"
                                     BorderWidth="1" BorderColor="Black" 
                                 />
                         </ViewCell>
