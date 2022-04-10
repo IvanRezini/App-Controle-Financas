@@ -11,7 +11,11 @@
                 <TableRoot>
                     <TableSection>
                         <ViewCell>
-                            <Picker x:Name="Conta" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                            <Entry x:Name="nomeConta" TextChanged="nomeConta_TextChanged"  Placeholder="Digite uma nova conta ou selecione uma:" Text="" PlaceholderColor="Black" 
+                               FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <Picker x:Name="Conta" SelectedIndexChanged="Conta_SelectedIndexChanged" FontAttributes="Bold" TextColor="Black" FontSize="18" Margin="5,0,0,0"/>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" RadioButtonGroup.GroupName=" pagamento">

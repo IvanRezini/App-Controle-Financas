@@ -272,7 +272,7 @@ namespace Adiministrador_Financeiro.Views
                 try
                 {
                     con.insert(novo);
-                    PostoDao postoDao = new PostoDao();
+                    PostoDao postoDao = new PostoDao();////ira recuperar o id do posto cadastrado
                     novo = postoDao.GetName(novo.Name);
                     idPosto = novo.Id;
                 }

@@ -20,6 +20,12 @@ namespace Adiministrador.Dao
             var db = contexto.conexao;
             return db.Table<ContasModel>().FirstOrDefault(t => t.Id == id);
         }
+        public ContasModel GetName(string name)
+        {
+            Contexto contexto = new Contexto();
+            var db = contexto.conexao;
+            return db.Table<ContasModel>().FirstOrDefault(t => t.Name == name);
+        }
         public void CaregarListaBanco()
         {
             Contexto contexto = new Contexto();

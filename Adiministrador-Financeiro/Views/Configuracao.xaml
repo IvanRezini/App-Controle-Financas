@@ -12,7 +12,7 @@
             <Button x:Name="veicolo" BackgroundColor="#65178C" Text="Veicolos" HorizontalOptions="FillAndExpand" Clicked="veicolo_Clicked"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="5,5,5,5">
-            <Button x:Name="banco" BackgroundColor="#1CD51C" Text="Banco" HorizontalOptions="FillAndExpand" Clicked="banco_Clicked"/>
+            <Button x:Name="conta" BackgroundColor="#1CD51C" Text="Contas" HorizontalOptions="FillAndExpand" Clicked="conta_Clicked"/>
             <Button x:Name="posto" BackgroundColor="#B4E112" Text="Posto" HorizontalOptions="FillAndExpand" Clicked="posto_Clicked"/>
         </StackLayout>
 

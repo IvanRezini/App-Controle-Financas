@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 namespace Adiministrador_Financeiro.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -32,7 +31,7 @@ namespace Adiministrador_Financeiro.Views
         {
             Salvar.IsVisible = false;
             cancelar.IsVisible = false;
-            banco.IsEnabled = true;
+            conta.IsEnabled = true;
             posto.IsEnabled = true;
             cliente.IsEnabled = true;
             veicolo.IsEnabled = true;
@@ -50,7 +49,7 @@ namespace Adiministrador_Financeiro.Views
         {
             Salvar.IsVisible = true;
             cancelar.IsVisible = true;
-            banco.IsEnabled = false;
+            conta.IsEnabled = false;
             posto.IsEnabled = false;
             cliente.IsEnabled = false;
             veicolo.IsEnabled = false;
@@ -59,7 +58,8 @@ namespace Adiministrador_Financeiro.Views
 
         }
 
-        private void banco_Clicked(object sender, EventArgs e)
+
+        private void conta_Clicked(object sender, System.EventArgs e)
         {
             this.mostrarCampos();
             Nome.Placeholder = "Cadastre uma nova conta";
@@ -168,7 +168,7 @@ namespace Adiministrador_Financeiro.Views
         /// <summary>
         /// 1- Client
         /// 2- veicolo
-        /// 3-banco
+        /// 3-Conta
         /// 4- posto
         /// Salva o modelo clicado.
         /// </summary>
@@ -203,7 +203,7 @@ namespace Adiministrador_Financeiro.Views
         {
 
             Contexto contexto = new Contexto();
-            if (Nome.Text.Trim().Length > 10)
+            if (Nome.Text.Trim().Length > 7)
             {
                 switch (model)
                 {
@@ -213,7 +213,7 @@ namespace Adiministrador_Financeiro.Views
                         if (IdC.Text.Trim() == "")
                         {
                             contexto.insert(cli);
-                            Usuario.Text=cli.Name;
+                            Usuario.Text = cli.Name;
                         }
                         else
                         {
@@ -253,8 +253,16 @@ namespace Adiministrador_Financeiro.Views
                         }
                         else
                         {
-                            ban.Id = Int16.Parse(IdC.Text);
-                            contexto.Update(ban);
+                            if ((Int16.Parse(IdC.Text)) < 6)
+                            {
+                                ban.Id = Int16.Parse(IdC.Text);
+                                contexto.Update(ban);
+                            }
+                            else
+                            {
+                                DisplayAlert("Sucesso", "Não é posivel alterar as contas pre definidas", "Ok");
+                                this.ocultarCampos();
+                            }
                         }
                         break;
                     case 4:
@@ -266,6 +274,7 @@ namespace Adiministrador_Financeiro.Views
                         }
                         else
                         {
+
                             pos.Id = Int16.Parse(IdC.Text);
                             contexto.Update(pos);
                         }
@@ -276,7 +285,7 @@ namespace Adiministrador_Financeiro.Views
             }
             else
             {
-                DisplayAlert("Falha", "O campo nome deve conter no minimo 10 caracteres", "Ok");
+                DisplayAlert("Falha", "O campo nome deve conter no minimo 7 caracteres", "Ok");
             }
 
         }
@@ -285,5 +294,7 @@ namespace Adiministrador_Financeiro.Views
         {
             this.ocultarCampos();
         }
+
+       
     }
 }
