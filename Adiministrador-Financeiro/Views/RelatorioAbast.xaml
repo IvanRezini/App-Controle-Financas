@@ -10,7 +10,7 @@
         <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="5,5,5,5">
             <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
                 <Label Text="Inicio" FontSize="18" TextColor="Black" FontAttributes="Bold"/>
-                <DatePicker  Date="01/01/2022" x:Name="dateInicio" TextColor="Black" Format="dd/MM/yyyy" FontAttributes="Bold"/>
+                <DatePicker x:Name="dateInicio" TextColor="Black" Format="dd/MM/yyyy" FontAttributes="Bold"/>
             </StackLayout>
             <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
                 <Label Text="Fim"  FontSize="18" TextColor="Black" FontAttributes="Bold"/>

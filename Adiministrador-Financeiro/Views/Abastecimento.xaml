@@ -5,7 +5,7 @@
     
     <StackLayout BackgroundColor="Aqua">
         <Frame BackgroundColor="Black" Padding="24" CornerRadius="1">
-            <Label x:Name="nome" Text="Ivan Carlos Rezini" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            <Label x:Name="nome" Text="" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
         <StackLayout VerticalOptions="Fill" >
             <TableView>

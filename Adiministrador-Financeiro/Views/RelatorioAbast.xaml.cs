@@ -24,6 +24,9 @@ namespace Adiministrador_Financeiro.Views
         {
             try
             {
+                DateTime hoje = DateTime.Now;
+                DateTime data_passado = hoje.AddDays(-30);
+                dateInicio.Date = data_passado;
                 VeicoloDao v = new VeicoloDao();
                 var aux = new List<String>();
                 List<VeicoloModel> vv = v.Get();

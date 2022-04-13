@@ -49,18 +49,19 @@ namespace Adiministrador_Financeiro.Views
                         {
                             con.insert(financasModel);
                             await DisplayAlert("Cadastro", "Efetuado", "OK");
+                            this.limparCampos();
                         }
                         catch (Exception er)
                         {
                             await DisplayAlert("Cadastro", "Falha\n" + er, "OK");
+                            this.limparCampos();
                         }
 
                     }
                     else
                     {
                         await DisplayAlert("Alert", "Cancelado", "OK");
-                        total.Text = "";
-                        Origem.SelectedItem = -1;
+                        this.limparCampos();
                     }
 
                 }
@@ -75,6 +76,11 @@ namespace Adiministrador_Financeiro.Views
             }
 
 
+        }
+        public void limparCampos()
+        {
+            total.Text = "";
+            Origem.SelectedItem = null;
         }
 
     }

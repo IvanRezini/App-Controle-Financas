@@ -25,13 +25,13 @@
                             <Grid BackgroundColor="Black" ColumnSpacing="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="12*" />
-                                    <ColumnDefinition Width="12*" />
+                                    <ColumnDefinition Width="15*" />
                                     <ColumnDefinition Width="10*" />
-                                   
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text ="Binding Veicolo" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
-                                <Label Grid.Column="1" Text ="Binding Data" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
-                                <Label Grid.Column="2" Text ="Binding ValorLitro" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding Cor}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold"></Label>
+
+                                </Grid.ColumnDefinitions >
+                                <Label Grid.Column="0" FontSize="20" Text ="{Binding Date}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding CorLinha}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold" TextColor="{Binding CorTexto}"></Label>
+                                <Label Grid.Column="1" FontSize="20" Text ="{Binding Conta}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding CorLinha}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold" TextColor="{Binding CorTexto}"></Label>
+                                <Label Grid.Column="2" FontSize="20" Text ="{Binding Valor}" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding CorLinha}" HorizontalTextAlignment="Center" Margin="1" FontAttributes="Bold" TextColor="{Binding CorTexto}"></Label>
                                </Grid>
                         </ViewCell>
                     </DataTemplate>
@@ -40,4 +40,3 @@
         </StackLayout>
     </ScrollView>
 </ContentPage>
-    

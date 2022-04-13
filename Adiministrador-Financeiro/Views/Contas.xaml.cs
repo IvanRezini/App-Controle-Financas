@@ -127,17 +127,18 @@ namespace Adiministrador_Financeiro.Views
                             {
                                 con.insert(financasModel);
                                 await DisplayAlert("Salvo", "Efetuado", "OK");
+                                this.limparCampos();
                             }
                             catch (Exception er)
                             {
+                                this.limparCampos();
                                 await DisplayAlert("Falha", "Falha\n" + er, "OK");
                             }
                         }
                         else
                         {
                             await DisplayAlert("Alert", "Cancelado", "OK");
-                            Valor.Text = "";
-                            Conta.SelectedItem = -1;
+                            this.limparCampos();
                         }
                     }
 
@@ -157,6 +158,17 @@ namespace Adiministrador_Financeiro.Views
                 await DisplayAlert("Falha", "Informe uma conta ou selecione uma:", "Ok");
 
             }
+        }
+
+        /*Limpa e 0 os campos
+           */
+        public void limparCampos()
+        {
+            Valor.Text = "";
+            nomeConta.Text = "";
+            Conta.SelectedItem = null;
+            Dinheiro.IsChecked = false;
+            CartaoPix.IsChecked = false;
         }
 
         private void nomeConta_TextChanged(object sender, TextChangedEventArgs e)

@@ -22,6 +22,9 @@ namespace Adiministrador_Financeiro.Views
         {
             try
             {
+                DateTime hoje = DateTime.Now;
+                DateTime data_passado = hoje.AddDays(-30);
+                dateInicio.Date = data_passado;
                 Selecao.Title = "Entradas/Saidas";
                
                     Selecao.Items.Add("1 - Entrada");
@@ -52,8 +55,8 @@ namespace Adiministrador_Financeiro.Views
                 string[] aux = aux1.Split('-');
                 IdSelecao = int.Parse(aux[0]);
             }
-
-            await Navigation.PushModalAsync(new RelatorioFinancas());
+            Selecao.SelectedItem = null;
+            await Navigation.PushModalAsync(new RelatorioFinancas(inicio,fim,IdSelecao));
         }
 
     }

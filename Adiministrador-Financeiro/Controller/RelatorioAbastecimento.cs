@@ -50,12 +50,12 @@ namespace Adiministrador.Controller
             relatorioFinal.Add(aux);
 
             aux = new RelatorioAbastecimentoModel();
-            aux.Data = "Toatal L:";
+            aux.Data = "Total L:";
             aux.Cor = "LightSteelBlue";
             aux.ValorLitro = tL.ToString("N2");
             relatorioFinal.Add(aux);
             aux = new RelatorioAbastecimentoModel();
-            aux.Data = "Toatal G:";
+            aux.Data = "Total G:";
             aux.Cor = "LightSteelBlue";
             aux.ValorLitro = tG.ToString("N2");
             relatorioFinal.Add(aux);
@@ -63,7 +63,6 @@ namespace Adiministrador.Controller
             aux.Data = "Media P:";
             aux.Cor = "LightSteelBlue";
             aux.ValorLitro = (tK/tL).ToString("N3");
-           
             relatorioFinal.Add(aux);
 
             return relatorioFinal;

@@ -25,8 +25,9 @@ namespace Adiministrador_Financeiro.Views
                 if (await DisplayAlert("Saque", "Valor = " + Valor.Text + "\nData = " + date.Date.ToString("dd-MM-yyyy"), "ok", "Cancelar"))
                 {
                     financasModel.Valor = Valor.Text;
+                    financasModel.Origem = 5;//origem 5 identifica que é um saque
                     financasModel.EntradaSaida = "S";//E entrada, S saida, N para pagamento em dinheiro no qual ja foi sacado
-                    financasModel.Data = date.Date.ToString("yyyy-MM-");
+                    financasModel.Data = date.Date.ToString("yyyy-MM-dd");
                     Contexto con = new Contexto();
                     try
                     {
