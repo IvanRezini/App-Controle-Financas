@@ -78,9 +78,6 @@
     <AndroidResource Include="Resources\mipmap-anydpi-v26\icon_round.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\pode.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Adiministrador-Financeiro\Adiministrador_Financeiro.csproj">
       <Project>{B0347410-00A6-47FB-9839-CAE6677B918A}</Project>
       <Name>Adiministrador_Financeiro</Name>
@@ -88,18 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\unnamed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\gasol.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\mapa.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\fgt.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\gas.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-mdpi\icon.png" />
