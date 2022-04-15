@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Adiministrador_Financeiro.MainPage">
 
-    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional">
+    <StackLayout >
         <Frame BackgroundColor="Black" Padding="24" CornerRadius="1">
             <Label x:Name="nome" Text="Cadastre seu nome" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-        <AbsoluteLayout >
-           
-            <TableView RowHeight="50">
+                <TableView RowHeight="50">
                 <TableRoot>
                     <TableSection>
                         <ViewCell >
@@ -73,18 +73,18 @@
                                 BorderWidth="5" BorderColor="Black"
                             />
                         </ViewCell>
-                        <ViewCell>
-                        <ImageButton 
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    <StackLayout >
+    <Image WidthRequest="200"
                             BackgroundColor="#800000"
                             Aspect="AspectFill"
                             Source="/Resources/drawable/unnamed.png" 
                             />
-                        </ViewCell>
-                    </TableSection>
-                </TableRoot>
-            </TableView>
-        </AbsoluteLayout>
-
+    </StackLayout>
+    </StackLayout>
     </StackLayout>
 
 </ContentPage>

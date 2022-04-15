@@ -323,7 +323,7 @@ namespace Adiministrador_Financeiro.Views
 
                 FinancasModel ff = new FinancasModel();
                 ff.IdConta = 1;/// Padrao para abastecimento
-                ff.Valor= ((Decimal.Parse(totalLitros.Text)) + (Decimal.Parse(vlLitro.Text))).ToString("F3");
+                ff.Valor= ((Decimal.Parse(totalLitros.Text)) * (Decimal.Parse(vlLitro.Text))).ToString("F3");
                 ff.Data = aux1;
                 ff.EntradaSaida=forma;
                 con.insert(ff);
