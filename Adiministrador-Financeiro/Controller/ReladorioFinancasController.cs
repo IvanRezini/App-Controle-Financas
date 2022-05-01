@@ -2,8 +2,9 @@
 using Adiministrador.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
-
+using PdfSharp;
 
 namespace Adiministrador.Controller
 {
@@ -131,6 +132,8 @@ namespace Adiministrador.Controller
                 return da;
             }
         }
-    }
+        
+        }
+
 }
 ///https://docs.microsoft.com/pt-br/xamarin/android/deploy-test/release-prep/?tabs=windows
