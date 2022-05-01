@@ -3,8 +3,6 @@ using Adiministrador.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using PdfSharp;
 
 namespace Adiministrador.Controller
 {
@@ -81,13 +79,13 @@ namespace Adiministrador.Controller
                             saidasTodal += (decimal.Parse(s.Valor));
                             break;
                         case "N":
-                            aux.Valor = "-"+s.Valor;
+                            aux.Valor = "-" + s.Valor;
                             aux.CorTexto = "Black";
                             aux.Conta = s.Conta;
                             pagamentoDinheiro += (decimal.Parse(s.Valor));
                             break;
                     }
-                    
+
                     ///salva a linha de relatorio
                     relatorioFinal.Add(aux);
                 }
@@ -107,7 +105,7 @@ namespace Adiministrador.Controller
                 aux.Date = "Total S:";
                 aux.CorLinha = "LightSteelBlue";
                 aux.CorTexto = "Red";
-                aux.Conta = "-"+(saidasTodal.ToString("N2"));
+                aux.Conta = "-" + (saidasTodal.ToString("N2"));
                 relatorioFinal.Add(aux);
 
                 aux = new RelatorioFinancasModel();
@@ -118,6 +116,7 @@ namespace Adiministrador.Controller
                 relatorioFinal.Add(aux);
 
                 return relatorioFinal;
+               // Gravar();
             }
             catch
             {
@@ -132,8 +131,20 @@ namespace Adiministrador.Controller
                 return da;
             }
         }
-        
-        }
 
+
+     /*   public void Gravar()
+        {
+
+            string text = "fdbf\nhhjh\n\nijoiij\n\n";
+            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "relatorio.pdf");
+
+            File.WriteAllText(fileName, text);
+            File.OpenRead(fileName);
+            bool doesExist = File.Exists(fileName);//ver se existe
+
+
+        }*/
+    }
 }
 ///https://docs.microsoft.com/pt-br/xamarin/android/deploy-test/release-prep/?tabs=windows

@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32210.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adiministrador-Financeiro.Android", "Adiministrador-Financeiro.Android\Adiministrador-Financeiro.Android.csproj", "{71893343-681B-405D-B382-6EF24713CD81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adiministrador_Financeiro", "Adiministrador-Financeiro\Adiministrador_Financeiro.csproj", "{B0347410-00A6-47FB-9839-CAE6677B918A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adiministrador_Financeiro", "Adiministrador-Financeiro\Adiministrador_Financeiro.csproj", "{B0347410-00A6-47FB-9839-CAE6677B918A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
